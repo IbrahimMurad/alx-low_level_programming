@@ -10,8 +10,8 @@
  */
 int main(void)
 {
-	char *er_msg = "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n";
+	char *msg = "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n";
 	
-	fwrite(er_msg, sizeof(char), strlen(er_msg), stderr);
+	fwrite(msg, sizeof(char), strlen(msg), stderr);
 	return (1);
 }
