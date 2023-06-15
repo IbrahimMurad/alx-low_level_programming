@@ -1,9 +1,10 @@
 #include <stdio.h>
 
 /**
- * mian - Entry point
+ * main - Entry point
  *
- * This program is to use printf function to print "with proper grammar, but the outcome is a piece of art,"
+ * This program is to use printf function
+ * to print "with proper grammar, but the outcome is a piece of art,"
  *
  * Return: Always 0 (success)
  */
