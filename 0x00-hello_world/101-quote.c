@@ -10,7 +10,9 @@
  */
 int main(void)
 {
-	char* err_message="and that piece of art is useful\" - Dora Korpar, 2015-10-19\n";
+	char *err_message = "and that piece of art is useful\""
+	       "	- Dora Korpar, 2015-10-19";
+	
 	fwrite(err_message, sizeof(char), strlen(err_message), stderr);
-	return 1;
+	return (1);
 }
