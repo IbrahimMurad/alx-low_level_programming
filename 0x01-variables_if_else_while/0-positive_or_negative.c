@@ -8,6 +8,7 @@
  * This program prints a random integer every time it runs
  * It uses the rand function to generate the number
  * printf function prints the number to teh screen
+ * 
  * Exit: Always (0) (success)
  */
 
