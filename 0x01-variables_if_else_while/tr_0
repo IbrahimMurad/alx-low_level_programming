@@ -1,1 +1,7 @@
 
+[master cbcbe3f] $mymessage
+ 4 files changed, 33 insertions(+)
+ create mode 100755 0x01-variables_if_else_while/3-print_alphabets
+ create mode 100644 0x01-variables_if_else_while/3-print_alphabets.c
+ create mode 100755 0x01-variables_if_else_while/gitting
+ create mode 100644 0x01-variables_if_else_while/tr_0

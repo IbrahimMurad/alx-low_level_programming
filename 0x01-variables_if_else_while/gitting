@@ -2,5 +2,5 @@
 echo
 export mymessage=$?
 git add .
-git commit -m '$mymessage'
+git commit -m $mymessage
 git push origin master
