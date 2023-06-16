@@ -21,19 +21,22 @@ int main(void)
 	{
 		for (j = '0'; j <= '9'; j++)
 		{
-			for (k = i; k <= '9'; k++)
+			for (k = '0'; k <= '9'; k++)
 			{
-				for (l = j + 1; l <= '9'; l++)
+				for (l = '0'; l <= '9'; l++)
 				{
-					putchar(i);
-					putchar(j);
-					putchar(' ');
-					putchar(k);
-					putchar(l);
-					if (!(i == '9' && j == '8' && k == '9' && l == '9'))
+					if (((10 * i) + j) < ((10 * k) + l))
 					{
-						putchar(',');
+						putchar(i);
+						putchar(j);
 						putchar(' ');
+						putchar(k);
+						putchar(l);
+						if (!(i == '9' && j == '8' && k == '9' && l == '9'))
+						{
+							putchar(',');
+							putchar(' ');
+						}
 					}
 				}
 			}
