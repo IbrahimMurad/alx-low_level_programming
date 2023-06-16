@@ -1,6 +1,13 @@
 #!/bin/bash
-echo
-export mymessage=$?
-git add .
-git commit -m $mymessage
-git push origin master
+
+if [ "$#" = "0" ]; then
+	echo "No arguments passed."
+	exit 1
+fi
+
+for mymessage in "$@" ; do
+	echo -e "\n========== $argument =========="
+	git add .
+	git commit -m $mymessage
+	git push origin master
+done
