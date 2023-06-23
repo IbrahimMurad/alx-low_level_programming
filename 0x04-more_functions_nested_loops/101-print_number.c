@@ -12,8 +12,9 @@ void print_number(int n)
 	int tens = 1;
 	unsigned int abs;
 	int temp_n;
-        if (n < 0)
-        {
+
+	if (n < 0)
+	{
 		_putchar('-');
 		abs = -n;
 	}
@@ -40,7 +41,8 @@ void print_number(int n)
 			_putchar((temp_n / tens) + '0');
 			temp_n = temp_n % tens;
 			tens /= 10;
-		}																        }
+		}
+	}
 }
 
 
