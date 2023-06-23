@@ -9,20 +9,39 @@
 
 void print_number(int n)
 {
-	unsigned int num = n;
-
-	if (n < 0)
-	{
+	int tens = 1;
+	unsigned int abs;
+	int temp_n;
+        if (n < 0)
+        {
 		_putchar('-');
-		num = -num;
+		abs = -n;
 	}
-	if ((num / 10) > 0)
+	else
 	{
-		print_number(num / 10);
+		abs = n;
 	}
-	_putchar((num % 10) + '0');
+	temp_n = abs;
+	while (temp_n > 0)
+	{
+		temp_n /= 10;
+		tens *= 10;
+	}
+	tens /= 10;
+	if (n == 0)
+	{
+		_putchar('0');
+	}
+	else
+	{
+		temp_n = abs;
+		while (tens > 0)
+		{
+			_putchar((temp_n / tens) + '0');
+			temp_n = temp_n % tens;
+			tens /= 10;
+		}																        }
 }
-
 
 
 
