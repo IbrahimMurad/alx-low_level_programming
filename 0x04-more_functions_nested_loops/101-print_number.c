@@ -8,38 +8,50 @@
 
 void print_number(int n)
 {
-	int tens = 1;
-	int abs;
-	int temp_n;
-
+	unsigned int num = n;
 	if (n < 0)
 	{
 		_putchar('-');
-		abs = -n;
+		num = -num;
 	}
-	else
+	if ((num / 10) > 0)
 	{
-		abs = n;
+		print_number(num / 10);
 	}
-	temp_n = abs;
-	while (temp_n > 0)
-	{
-		temp_n /= 10;
-		tens *= 10;
-	}
-	tens /= 10;
-	if (n == 0)
-	{
-		_putchar('0');
-	}
-	else
-	{
-		temp_n = abs;
-		while (tens > 0)
-		{
-			_putchar((temp_n / tens) + '0');
-			temp_n = temp_n % tens;
-			tens /= 10;
-		}
-	}
+	_putchar((num % 10) + '0');
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -8,19 +8,12 @@
 
 int main(void)
 {
-	print_number(98);
-	_putchar('\n');
-	print_number(402);
-	_putchar('\n');
-	print_number(1024);
-	_putchar('\n');
-	print_number(0);
-	_putchar('\n');
-	print_number(-98);
-	_putchar('\n');
-	print_number(10);
-	_putchar('\n');
-	print_number(100);
-	_putchar('\n');
+	int i;
+
+	for (i = -100; i < 100000; i += 100)
+	{
+		print_number(i);
+		_putchar('\n');
+	}
 	return (0);
 }
