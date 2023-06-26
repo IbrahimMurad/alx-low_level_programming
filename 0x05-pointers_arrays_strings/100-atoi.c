@@ -10,24 +10,32 @@
 
 int _atoi(char *s)
 {
-	int index, i, minus, int_sign, the_integer, f_index;
+	int length, found, index, i, minus, int_sign, the_integer, f_index;
 
 	index = 0;
+	length = 0;
 	minus = 0;
-	while ((s[index] != '\0') || !((s[index] >= '0') && (s[index] <= '9')))
+	found = 0;
+	while (s[length] != '\0')
 	{
-		index++;
+		length++;
 	}
-	if (index == 0)
+	for (i = 0; i < length; i++)
 	{
-		return (0);
-	}
-	for (i = 0; i < index; i++)
-	{
-		if (s[i] == '-')
+		if ((s[i] >= '0') && (s[i] <= '9'))
+		{
+			index = i;
+			found = 1;
+			break;
+		}
+		else if (s[i] == '-')
 		{
 			minus++;
 		}
+	}
+	if ((length == 0) || (found == 0))
+	{
+		return (0);
 	}
 	if (minus % 2 == 0)
 	{
