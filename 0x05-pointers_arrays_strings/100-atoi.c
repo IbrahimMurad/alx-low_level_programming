@@ -10,13 +10,9 @@
 
 int _atoi(char *s)
 {
-	int length = 0, found = 0, index = 0, i, minus = 0, int_sign, the_integer, f_index;
+	int i = 0, found = 0, index = 0, minus = 0, sign = 1, intgr, f_index;
 
-	while (s[length] != '\0')
-	{
-		length++;
-	}
-	for (i = 0; i < length; i++)
+	while (s[i] != '\0')
 	{
 		if ((s[i] >= '0') && (s[i] <= '9'))
 		{
@@ -28,28 +24,25 @@ int _atoi(char *s)
 		{
 			minus++;
 		}
+		i++;
 	}
-	if ((length == 0) || (found == 0))
+	if (found == 0)
 	{
 		return (0);
 	}
-	if (minus % 2 == 0)
+	if (minus % 2 != 0)
 	{
-		int_sign = 1;
-	}
-	else
-	{
-		int_sign = -1;
+		sign = -1;
 	}
 	f_index = index;
 	while ((s[f_index] >= '0') && (s[f_index] <= '9'))
 	{
 		f_index++;
 	}
-	the_integer = int_sign * (s[index] - '0');
-	for (i = index + 1; i < f_index; i++)
+	intgr = 0;
+	for (i = index; i < f_index; i++)
 	{
-		the_integer = (10 * the_integer) + (int_sign * (s[i] - '0'));
+		intgr = (10 * intgr) + (sign * (s[i] - '0'));
 	}
-	return (the_integer);
+	return (intgr);
 }
