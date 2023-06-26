@@ -1,0 +1,4 @@
+#!/bin/bash
+git add .
+git commit -m 'Pointers are fun'
+git push
