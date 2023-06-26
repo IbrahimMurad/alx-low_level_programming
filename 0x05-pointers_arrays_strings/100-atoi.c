@@ -10,12 +10,8 @@
 
 int _atoi(char *s)
 {
-	int length, found, index, i, minus, int_sign, the_integer, f_index;
+	int length = 0, found = 0, index = 0, i, minus = 0, int_sign, the_integer, f_index;
 
-	index = 0;
-	length = 0;
-	minus = 0;
-	found = 0;
 	while (s[length] != '\0')
 	{
 		length++;
@@ -50,10 +46,10 @@ int _atoi(char *s)
 	{
 		f_index++;
 	}
-	the_integer = s[index] - '0';
+	the_integer = int_sign * (s[index] - '0');
 	for (i = index + 1; i < f_index; i++)
 	{
-		the_integer = (10 * the_integer) + (s[i] - '0');
+		the_integer = (10 * the_integer) + (int_sign * (s[i] - '0'));
 	}
-	return (the_integer * int_sign);
+	return (the_integer);
 }
