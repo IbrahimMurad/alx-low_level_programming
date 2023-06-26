@@ -18,7 +18,7 @@ void rev_string(char *s)
 	{
 		l++;
 	}
-	strcpy(temp, s);	
+	strcpy(temp, s);
 	for (i = 0; i < l; i++)
 	{
 		*(s + i) = *(temp + l - 1 - i);
