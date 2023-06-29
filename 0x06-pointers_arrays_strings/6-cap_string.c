@@ -9,11 +9,24 @@
 char *cap_string(char *s)
 {
 	char *temp = s;
-	char sep[] = {' ', '\t', '\n', ',', ';', '.', '!', '?', '"', '(', ')', '{', '}'};
+	char sep[13];
 	int i, j;
 
-	s[0] = toupper(s[0]);
+	sep[0] = ' ';
+	sep[1] = '\t';
+	sep[2] = '\n';
+	sep[3] = ',';
+	sep[4] = ';';
+	sep[5] = '.';
+	sep[6] = '!';
+	sep[7] = '?';
+	sep[8] = '"';
+	sep[9] = '(';
+	sep[10] = ')';
+	sep[11] = '{';
+	sep[12] = '}';
 
+	s[0] = toupper(s[0]);
 	for (i = 1; s[i] != '\0'; i++)
 	{
 		for (j = 0; j < 13; j++)
