@@ -10,7 +10,7 @@ char *string_toupper(char *s)
 	char *temp = s;
 	int i;
 	int diff = 'a' - 'A';
-	
+
 	for (i = 0; s[i] != '\0'; i++)
 	{
 		if ((s[i] >= 'a') && (s[i] <= 'z'))
