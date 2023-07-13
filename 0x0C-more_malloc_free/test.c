@@ -3,7 +3,7 @@
 
 int main(void)
 {
-	char *s = "Oh my!";
+	char *s = "";
 	printf("%ld\n", strlen(s));
 	return 0;
 }
