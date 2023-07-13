@@ -19,6 +19,14 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 
 	l1 = strlen(s1);
 	l2 = strlen(s2);
+	if (s1 == NULL)
+	{
+		l1 = 0;
+	}
+	if (s2 == NULL)
+	{
+		l2 = 0;
+	}
 	temp = malloc(l1 + 1 + n);
 
 	if (temp == NULL)
