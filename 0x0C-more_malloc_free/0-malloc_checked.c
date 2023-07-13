@@ -10,7 +10,7 @@
 
 void *malloc_checked(unsigned int b)
 {
-	float *temp = malloc(sizeof(*temp) * b);
+	char *temp = malloc(b * sizeof(*temp));
 
 	if (temp == NULL)
 	{
