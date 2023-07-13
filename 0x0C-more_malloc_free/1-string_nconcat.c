@@ -1,5 +1,24 @@
 #include <stdlib.h>
 #include <string.h>
+/**
+ * null_to_zero - finds the lengths of a string
+ * @s: the string
+ *
+ * Return: the length of the string
+ * Or 0 if the pointer to the string is NULL
+ */
+
+unsigned int null_to_zero(char *s)
+{
+	if (s == NULL)
+	{
+		return (0);
+	}
+	else
+	{
+		return (strlen(s));
+	}
+}
 
 /**
  * string_nconcat - concatenates two strings.
@@ -15,24 +34,10 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	char *temp;
 	unsigned int i;
-	unsigned int l1, l2;
+	unsigned int l1 = 0, l2 = 0;
 
-	if (s1 == NULL)
-	{
-		l1 = 0;
-	}
-	else
-	{
-		l1 = strlen(s1);
-	}
-	if (s2 == NULL)
-	{
-		l2 = 0;
-	}
-	else
-	{
-		l2 = strlen(s2);
-	}
+	l1 = null_to_zero(s1);
+	l2 = null_to_zero(s2);
 	temp = malloc(l1 + n + 1);
 	if (temp == NULL)
 	{
