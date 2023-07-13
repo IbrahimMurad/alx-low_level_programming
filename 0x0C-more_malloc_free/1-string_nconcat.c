@@ -17,17 +17,22 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	unsigned int i;
 	unsigned int l1, l2;
 
-	l1 = strlen(s1);
-	l2 = strlen(s2);
 	if (s1 == NULL)
 	{
 		l1 = 0;
+	}
+	else
+	{
+		l1 = strlen(s1);
 	}
 	if (s2 == NULL)
 	{
 		l2 = 0;
 	}
-
+	else
+	{
+		l2 = strlen(s2);
+	}
 	temp = malloc(l1 + n + 1);
 	if (temp == NULL)
 	{
