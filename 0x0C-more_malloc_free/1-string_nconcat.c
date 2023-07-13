@@ -19,7 +19,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 
 	l1 = strlen(s1);
 	l2 = strlen(s2);
-	temp = malloc(l1 + 1 + n);
+	temp = malloc(l1 + n + 1);
 
 	if (temp == NULL)
 	{
@@ -35,10 +35,12 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		{
 			temp[l1 + i] = s2[i];
 		}
+		temp[l1 + i] = '\0';
 	}
 	else
 	{
-		for (i = 0; i < l2; i++)
+		temp = realloc(temp, l1 + l2 + 1);
+		for (i = 0; i <= l2; i++)
 		{
 			temp[l1 + i] = s2[i];
 		}
