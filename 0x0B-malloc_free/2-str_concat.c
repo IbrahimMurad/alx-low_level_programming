@@ -16,12 +16,22 @@ char *str_concat(char *s1, char *s2)
 	char *ptr;
 	unsigned int i, size1, size2, size;
 
-	if (s1 == NULL || s2 == NULL)
+	if (s1 == NULL)
 	{
-		return (NULL);
+		size1 = 0;
 	}
-	size1 = strlen(s1);
-	size2 = strlen(s2);
+	else
+	{
+		size1 = strlen(s1);
+	}
+	if (s2 == NULL)
+	{
+		size2 = 0;
+	}
+	else
+	{
+		size2 = strlen(s2);
+	}
 	size = size1 + size2;
 	ptr = malloc(size + 1);
 	if (ptr == NULL)
