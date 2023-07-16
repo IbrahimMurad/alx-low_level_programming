@@ -15,7 +15,7 @@ char *argstostr(int ac, char **av)
 	int i, j, k;
 	char *ptr;
 
-	for (i = 1; i < ac; i++)
+	for (i = 0; i < ac; i++)
 	{
 		size = size + strlen(av[i]) + 1;
 	}
@@ -25,7 +25,7 @@ char *argstostr(int ac, char **av)
 		return (NULL);
 	}
 	k = 0;
-	for (i = 1; i < ac; i++)
+	for (i = 0; i < ac; i++)
 	{
 		for (j = 0; j < (int) strlen(av[i]); j++)
 		{
