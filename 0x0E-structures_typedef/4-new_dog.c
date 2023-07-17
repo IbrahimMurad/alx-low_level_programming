@@ -50,6 +50,8 @@ dog_t *new_dog(char *name, float age, char *owner)
 	{
 		return (NULL);
 	}
-	init_dog(temp, temp_name, age, temp_owner);
+	temp->name = temp_name;
+	temp->age = age;
+	temp->owner = temp_owner;
 	return (temp);
 }
