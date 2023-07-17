@@ -22,7 +22,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 
 	if (name == NULL)
 	{
-		temp->name = "";
+		temp->name = "(nil)";
 	}
 	else
 	{
@@ -31,7 +31,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 	temp->age = age;
 	if (owner == NULL)
 	{
-		temp->owner = "";
+		temp->owner = "(nil)";
 	}
 	else
 	{
