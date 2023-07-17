@@ -27,7 +27,6 @@ struct dog
  * Return: a pointer to the initialized struct dog variable
  */
 
-
 void init_dog(struct dog *d, char *name, float age, char *owner);
 
 #endif
