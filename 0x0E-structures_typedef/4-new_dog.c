@@ -44,12 +44,14 @@ dog_t *new_dog(char *name, float age, char *owner)
 		temp_name[i] = name[i];
 		i++;
 	}
+	temp_name[i] = '\0';
 	i = 0;
 	while (owner[i] != '\0')
 	{
 		temp_owner[i] = owner[i];
 		i++;
 	}
+	temp_owner[i] = '\0';
 	temp = malloc(sizeof(struct dog));
 	if (temp == NULL)
 	{
