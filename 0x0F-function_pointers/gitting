@@ -1,0 +1,4 @@
+!#/bash/bin
+git add .
+git commit -m 'a function is one step ahead'
+git push
