@@ -54,11 +54,9 @@ void my_print_str(char *s)
 	if (s == NULL)
 	{
 		printf("(nil)");
+		return;
 	}
-	else
-	{
-		printf("%s", s);
-	}
+	printf("%s", s);
 }
 
 /**
