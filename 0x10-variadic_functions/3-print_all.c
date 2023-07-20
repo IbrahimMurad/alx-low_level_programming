@@ -37,7 +37,7 @@ char *discard_other_chars(const char * const s, unsigned int *len)
 		i++;
 	}
 	temp[j] = '\0';
-	*len = j - 1;
+	*len = j;
 	return (temp);
 }
 
