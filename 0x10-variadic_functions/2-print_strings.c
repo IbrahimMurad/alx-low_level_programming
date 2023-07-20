@@ -79,6 +79,5 @@ void print_strings(const char *separator, const unsigned int n, ...)
 				printing(temp, "\n", fun_ptr);
 			}
 		}
-			
 	}
 }
