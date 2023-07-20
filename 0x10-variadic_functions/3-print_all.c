@@ -93,7 +93,7 @@ void print_all(const char * const format, ...)
 			default:
 				break;
 		}
-		if (i < len)
+		if (i < len - 1)
 		{
 			printf(", ");
 		}
