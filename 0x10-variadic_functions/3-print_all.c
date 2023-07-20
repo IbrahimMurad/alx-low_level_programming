@@ -74,7 +74,7 @@ void print_all(const char * const format, ...)
 	char *temp_format = discard_other_chars(format, &len);
 
 	va_start(args, format);
-	while (temp_format[i] && i < 9)
+	while (temp_format[i])
 	{
 		switch (temp_format[i])
 		{
