@@ -22,10 +22,17 @@ char *discard_other_chars(const char * const s, unsigned int *len)
 	i = 0;
 	while (s[i])
 	{
-		if (s[i] == 'c' || s[i] == 'i' || s[i] == 'f' || s[i] == 's')
+		switch (s[i])
 		{
-			temp[j] = s[i];
-			j++;
+			case 'c':
+			case 'i':
+			case 'f':
+			case 's':
+				temp[j] = s[i];
+				j++;
+				break;
+			default:
+				break;
 		}
 		i++;
 	}
