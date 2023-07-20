@@ -1,0 +1,4 @@
+!#/bash/bin
+git add .
+git commit -m 'read me, read me, read me, ...'
+git push
