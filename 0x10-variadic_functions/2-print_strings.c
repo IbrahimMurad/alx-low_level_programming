@@ -72,12 +72,14 @@ void print_strings(const char *separator, const unsigned int n, ...)
 		{
 			if (temp == NULL)
 			{
-				printing("(nil)", "\n", fun_ptr);
+				printf("(nil)");
 			}
 			else
 			{
-				printing(temp, "\n", fun_ptr);
+				printf("%s", temp);
 			}
 		}
 	}
+	va_end(args);
+	printf("\n");
 }

@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "variadic_functions.h"
 
 /**
@@ -10,6 +11,6 @@ int main(void)
     char *str1 = NULL;
     char *str2 = NULL;
     
-    print_strings(", ", 2, str1, str2);
+    print_strings(" ", -41, str1, str2);
     return (0);
 }
