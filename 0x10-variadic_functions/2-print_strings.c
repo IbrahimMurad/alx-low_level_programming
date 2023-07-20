@@ -54,19 +54,31 @@ void print_strings(const char *separator, const unsigned int n, ...)
 	void (*fun_ptr)(const char *) = &fun;
 
 	va_start(args, n);
-	for (i = 0; i < n - 1; i++)
+	for (i = 0; i < n; i++)
 	{
 		temp = va_arg(args, char *);
-		if (temp == NULL)
+		if (i < n - 1)
 		{
-			printing("(nil)", separator, fun_ptr);
+			if (temp == NULL)
+			{
+				printing("(nil)", separator, fun_ptr);
+			}
+			else
+			{
+				printing(temp, separator, fun_ptr);
+			}
 		}
 		else
 		{
-			printing(temp, separator, fun_ptr);
+			if (temp == NULL)
+			{
+				printing("(nil)", "\n", fun_ptr);
+			}
+			else
+			{
+				printing(temp, "\n", fun_ptr);
+			}
 		}
+			
 	}
-	temp = va_arg(args, char *);
-	printing(temp, NULL, fun_ptr);
-	printf("\n");
 }
