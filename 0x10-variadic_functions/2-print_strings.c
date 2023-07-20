@@ -3,12 +3,6 @@
 #include <stdio.h>
 #include "variadic_functions.h"
 
-
-void print_my_string(char *s)
-{
-	printf("%s", s);
-}
-
 /**
  * fun - prints the passed string
  * @s: the passed string to be printed
@@ -26,6 +20,7 @@ void fun(const char *s)
  * and if the second onw is NULL, it prints the first only
  * @s: the first string
  * @sep: the second string
+ * @fun: a pointer to the function that prints the passed strings
  *
  * Return: Nothing
  */
@@ -56,7 +51,7 @@ void print_strings(const char *separator, const unsigned int n, ...)
 	unsigned int i;
 	char *temp;
 	va_list args;
-	void (*fun_ptr)(const char *) = &fun; 
+	void (*fun_ptr)(const char *) = &fun;
 
 	va_start(args, n);
 	for (i = 0; i < n - 1; i++)
