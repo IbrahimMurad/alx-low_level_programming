@@ -1,5 +1,10 @@
 #include <stdio.h>
 
+/**
+ * premain - prints a string before main excution
+ *
+ * Return: Nothing
+ */
 
 void __attribute__ ((constructor)) premain()
 {
