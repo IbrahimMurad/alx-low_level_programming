@@ -8,7 +8,7 @@ main:
 	sub	rsp, 16
 
 	xor	eax, eax
-	lea	rdi, [str]
+	lea	rdi, [hello]
 	call 	printf
 
 	add	rsp, 16
@@ -16,4 +16,4 @@ main:
 	ret
 
 section .data
-	str: db "Hello, Holberton",13,10
+	hello: db 'Hello, Holberton',10, 0
