@@ -33,7 +33,7 @@ int main(void)
 	free(new->str);
 	new->str = NULL;
 	n = print_list(head);
-	printf("-> %lu elements\n", n);
+	printf("%s-> %lu elements\n", hello.str, n);
 	free(new);
 	return (0);
 }
