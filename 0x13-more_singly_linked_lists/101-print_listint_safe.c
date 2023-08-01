@@ -9,35 +9,26 @@
  * Return: Nothing
  */
 
-size_t print_listint_safe(listint_t *head)
+size_t print_listint_safe(const listint_t *head)
 {
-	size_t count = 0, i;
-	listint_t *temp;
-	listint_t **ptrlist = malloc(sizeof(head) * 1024);
+	size_t count = 0;
+	const listint_t *temp;
 
 	if (head == NULL)
 	{
 		return (0);
 	}
-	else
+	temp = head;
+	while (temp)
 	{
-		ptrlist[count] = head;
-		printf("[%#lx] %d\n", ((long int) head) % 0xfffffff, head->n);
+		printf("[%p] %d\n", (void *) temp, temp->n);
 		count++;
-	}
-	for (temp = head->next; temp != NULL; temp = temp->next)
-	{
-		ptrlist[count] = temp;
-		for (i = 0; i < count; i++)
+		if (temp->next >= temp)
 		{
-			if (temp == ptrlist[i])
-			{
-				printf("-> [%#lx] %d\n", ((long int) temp) % 0xfffffff, temp->n);
-				return (count);
-			}
+			printf("-> [%p] %d\n", (void *) temp->next, (temp->next)->n);
+			break;
 		}
-		printf("[%#lx] %d\n", ((long int) temp) % 0xfffffff, temp->n);
-		count++;
+		temp = temp->next;
 	}
 	return (count);
 }
