@@ -30,6 +30,11 @@ size_t free_listint_safe(listint_t **h)
 			while (*h)
 			{
 				temp = *h;
+				temp = malloc(sizeof(listint_t));
+				if (temp == NULL)
+				{
+					return (count);
+				}
 				*h = (*h)->next;
 				free(temp);
 				count++;
