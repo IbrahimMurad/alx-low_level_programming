@@ -11,7 +11,11 @@ size_t free_listint_safe(listint_t **h)
 {
 	listint_t *temp;
 	size_t count = 0;
+<<<<<<< HEAD
 	long int dif;
+=======
+	long long int dif;
+>>>>>>> b3204501d0136193987de28a9f7281b5ea54fcee
 
 	if (h == NULL)
 	{
@@ -24,7 +28,11 @@ size_t free_listint_safe(listint_t **h)
 		*h = (*h)->next;
 		if (temp <= *h)
 		{
+<<<<<<< HEAD
 			*h = temp - dif;
+=======
+			*h = (temp - dif);
+>>>>>>> b3204501d0136193987de28a9f7281b5ea54fcee
 			free(temp);
 			count++;
 			while (*h)
