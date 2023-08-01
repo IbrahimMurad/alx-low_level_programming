@@ -22,7 +22,7 @@ size_t print_listint_safe(listint_t *head)
 	else
 	{
 		ptrlist[count] = head;
-		printf("[%p] %d\n", (void *) head, head->n);
+		printf("[%#lx] %d\n", ((long int) head) % 0xffffffff, head->n);
 		count++;
 	}
 	for (temp = head->next; temp != NULL; temp = temp->next)
@@ -32,11 +32,11 @@ size_t print_listint_safe(listint_t *head)
 		{
 			if (temp == ptrlist[i])
 			{
-				printf("-> [%p] %d\n", (void *) temp, temp->n);
+				printf("-> [%#lx] %d\n", ((long int) temp) % 0xffffffff, temp->n);
 				return (count);
 			}
 		}
-		printf("[%p] %d\n", (void *) temp, temp->n);
+		printf("[%#lx] %d\n", ((long int) temp) % 0xffffffff, temp->n);
 		count++;
 	}
 	return (count);
