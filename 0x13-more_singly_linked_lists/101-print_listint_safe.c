@@ -1,6 +1,7 @@
 #include "lists.h"
 #include <stdio.h>
 
+
 /**
  * print_listint_safe - prints all the elements of a listint_t list
  * Also, it handles the loops if it exist.
@@ -11,22 +12,39 @@
 
 size_t print_listint_safe(const listint_t *head)
 {
-	size_t count = 0;
-	const listint_t *temp;
+	size_t count = 0, once = 0;
+	const listint_t *temp, *fast, *slow;
 
-	if (head == NULL)
+	fast = head;
+	slow = head;
+	while (fast && slow && fast->next)
 	{
-		return (0);
+		fast = fast->next->next;
+		slow = slow->next;
+		if (fast == slow)
+		{
+			slow = head;
+			while (fast != slow)
+			{
+				slow = slow->next;
+				fast = fast->next;
+			}
+			break;
+		}
 	}
 	temp = head;
 	while (temp)
 	{
+		if (once == 1 && temp == fast)
+		{
+			printf("-> [%p] %d\n", (void *) temp, temp->n);
+			return (count);
+		}
 		printf("[%p] %d\n", (void *) temp, temp->n);
 		count++;
-		if (temp->next >= temp)
+		if (temp == fast)
 		{
-			printf("-> [%p] %d\n", (void *) temp->next, (temp->next)->n);
-			break;
+			once++;
 		}
 		temp = temp->next;
 	}
