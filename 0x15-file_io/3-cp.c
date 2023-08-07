@@ -21,7 +21,7 @@ int opentoread(char *file)
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 	{
-		printf("Error: Can't read from file %s", file);
+		printf("Error: Can't read from file %s\n", file);
 		exit(98);
 	}
 	return (fd);
@@ -43,7 +43,7 @@ int opentowrite(char *file)
 	fd = open(file, O_CREAT | O_TRUNC | O_RDWR, mode);
 	if (fd == -1)
 	{
-		printf("Error: Can't read from file %s", file);
+		printf("Error: Can't read from file %s\n", file);
 		exit(99);
 	}
 	return (fd);
@@ -102,13 +102,13 @@ int main(int ac, char **av)
 	closed = close(inFile);
 	if (closed == -1)
 	{
-		printf("Error: Can't close fd %d", inFile);
+		printf("Error: Can't close fd %d\n", inFile);
 		exit(100);
 	}
 	closed = close(outFile);
 	if (closed == -1)
 	{
-		printf("Error: Can't close fd %d", outFile);
+		printf("Error: Can't close fd %d\n", outFile);
 	}
 	return (0);
 }
