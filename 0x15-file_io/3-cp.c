@@ -21,7 +21,7 @@ int opentoread(char *file)
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 	{
-		printf("Error: Can't read from file %s\n", file);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file);
 		exit(98);
 	}
 	return (fd);
@@ -43,7 +43,7 @@ int opentowrite(char *file)
 	fd = open(file, O_CREAT | O_TRUNC | O_RDWR, mode);
 	if (fd == -1)
 	{
-		printf("Error: Can't read from file %s\n", file);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file);
 		exit(99);
 	}
 	return (fd);
@@ -93,7 +93,7 @@ int main(int ac, char **av)
 
 	if (ac != 3)
 	{
-		printf("Usage: cp file_from file_to\n");
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
 	inFile = opentoread(av[1]);
@@ -102,13 +102,13 @@ int main(int ac, char **av)
 	closed = close(inFile);
 	if (closed == -1)
 	{
-		printf("Error: Can't close fd %d\n", inFile);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", inFile);
 		exit(100);
 	}
 	closed = close(outFile);
 	if (closed == -1)
 	{
-		printf("Error: Can't close fd %d\n", outFile);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", outFile);
 	}
 	return (0);
 }
