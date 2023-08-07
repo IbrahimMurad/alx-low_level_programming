@@ -102,7 +102,7 @@ int main(int ac, char **av)
 	W = cpyfile(&inFile, &outFile);
 	if (W == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", av[2]);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
 		exit(99);
 	}
 	closed = close(inFile);
