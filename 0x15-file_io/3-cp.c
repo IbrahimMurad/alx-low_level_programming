@@ -65,10 +65,7 @@ int cpyfile(int *fromfile, int *tofile)
 	while (R != 0)
 	{
 		R = read(*fromfile, buf, 1024);
-		if (R != 0)
-		{
-			dprintf(*tofile, "%s", buf);
-		}
+		write(*tofile, buf, R);
 	}
 	return (1);
 }
