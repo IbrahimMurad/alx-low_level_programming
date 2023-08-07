@@ -67,12 +67,12 @@ int cpyfile(int *fromfile, int *tofile)
 		R = read(*fromfile, buf, 1024);
 		if (R == -1)
 		{
-			return (-2);
+			return (-1);
 		}
 		W = write(*tofile, buf, R);
 		if (W == -1)
 		{
-			return (-1);
+			return (-2);
 		}
 	}
 	return (1);
