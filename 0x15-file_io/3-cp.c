@@ -21,7 +21,7 @@ int opentoread(char *file)
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file);
+		dprintf(STDERR_FILENO, "Error: Can't read from file  %s\n", file);
 		exit(98);
 	}
 	return (fd);
@@ -54,7 +54,7 @@ int opentowrite(char *file)
  * @fromfile: fd of the file from which we copy
  * @tofile: fd of the file to which we copy
  *
- * Return: 1 on success or -1 on fail
+ * Return: 1 on success or -1 on fail to read and -2 on fail to write
  */
 
 int cpyfile(int *fromfile, int *tofile)
@@ -65,6 +65,10 @@ int cpyfile(int *fromfile, int *tofile)
 	while (R != 0)
 	{
 		R = read(*fromfile, buf, 1024);
+		if (R == -1)
+		{
+			return (-2);
+		}
 		W = write(*tofile, buf, R);
 		if (W == -1)
 		{
@@ -101,6 +105,11 @@ int main(int ac, char **av)
 	outFile = opentowrite(av[2]);
 	W = cpyfile(&inFile, &outFile);
 	if (W == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file  %s\n", av[1]);
+		exit(98);
+	}
+	if (W == -2)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
 		exit(99);
