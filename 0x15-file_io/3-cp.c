@@ -87,7 +87,7 @@ int cpyfile(int *fromfile, int *tofile)
  * 99 if the file to write to can not be written
  * 100 if can not close the file descriptor
  */
-
+	
 int main(int ac, char **av)
 {
 	int inFile, outFile, closed, W;
