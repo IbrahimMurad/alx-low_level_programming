@@ -43,7 +43,7 @@ int opentowrite(char *file)
 	fd = open(file, O_CREAT | O_TRUNC | O_RDWR, mode);
 	if (fd == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file);
+		dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", file);
 		exit(99);
 	}
 	return (fd);
@@ -106,6 +106,7 @@ int main(int ac, char **av)
 	if (closed == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", outFile);
+		exit(100);
 	}
 	return (0);
 }
