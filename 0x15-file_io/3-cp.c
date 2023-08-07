@@ -59,16 +59,15 @@ int opentowrite(char *file)
 
 int cpyfile(int *fromfile, int *tofile)
 {
-	int R = 1, W;
+	int R = 1;
 	char buf[1024];
 
 	while (R != 0)
 	{
 		R = read(*fromfile, buf, 1024);
-		W = write(*tofile, buf, R);
-		if (W == -1)
+		if (R != 0)
 		{
-			return (-1);
+			dprintf(*tofile, "%s", buf);
 		}
 	}
 	return (1);
@@ -90,7 +89,7 @@ int cpyfile(int *fromfile, int *tofile)
 
 int main(int ac, char **av)
 {
-	int inFile, outFile, written, closed;
+	int inFile, outFile, closed;
 
 	if (ac != 3)
 	{
@@ -99,12 +98,7 @@ int main(int ac, char **av)
 	}
 	inFile = opentoread(av[1]);
 	outFile = opentowrite(av[2]);
-	written = cpyfile(&inFile, &outFile);
-	if (written == -1)
-	{
-		printf("Error: Can't write to %s", av[2]);
-		exit(99);
-	}
+	cpyfile(&inFile, &outFile);
 	closed = close(inFile);
 	if (closed == -1)
 	{
