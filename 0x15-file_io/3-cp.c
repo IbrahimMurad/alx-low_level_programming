@@ -40,7 +40,7 @@ int opentowrite(char *file)
 	int fd;
 	mode_t mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
 
-	fd = open(file, O_CREAT | O_TRUNC | O_RDWR, mode);
+	fd = open(file, O_CREAT | O_TRUNC | O_WRONLY, mode);
 	if (fd == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", file);
