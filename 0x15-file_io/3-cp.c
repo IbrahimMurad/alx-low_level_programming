@@ -43,7 +43,7 @@ int opentowrite(char *file)
 	fd = open(file, O_CREAT | O_TRUNC | O_WRONLY, mode);
 	if (fd == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", file);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file);
 		exit(99);
 	}
 	return (fd);
