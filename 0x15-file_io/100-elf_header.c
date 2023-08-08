@@ -15,11 +15,14 @@
 
 void print_Magic(Elf64_Ehdr ElH)
 {
-	printf("  Magic:   %02x %02x %02x %02x", 0x7f, 'E', 'L', 'F');
-	printf(" %02x %02x ", ElH.e_ident[4], ElH.e_ident[5]);
-	printf("%02x %02x ", ElH.e_ident[6], ElH.e_ident[7]);
-	printf("%02x ", ElH.e_ident[8]);
-	printf("00 00 00 00 00 00 00\n");
+	int i;
+
+	printf("  Magic:   ");
+	for (i = 0; i < 15; i++)
+	{
+		printf("%2.2x ", ElH.e_ident[i]);
+	}
+	printf("%2.2x\n", ElH.e_ident[i]);
 }
 
 /**
@@ -31,7 +34,7 @@ void print_Magic(Elf64_Ehdr ElH)
 
 void print_Class(Elf64_Ehdr ElH)
 {
-	printf("  %-35s", "Class: ");
+	printf("  Class:                             ");
 	if (ElH.e_ident[EI_CLASS] == ELFCLASSNONE)
 	{
 		printf("Invalid class\n");
@@ -55,7 +58,7 @@ void print_Class(Elf64_Ehdr ElH)
 
 void print_Data(Elf64_Ehdr ElH)
 {
-	printf("  %-35s", "Data: ");
+	printf("  Data:                              ");
 	if (ElH.e_ident[EI_DATA] == ELFDATANONE)
 	{
 		printf("Invalid data encoding\n");
@@ -79,7 +82,7 @@ void print_Data(Elf64_Ehdr ElH)
 
 void print_Version(Elf64_Ehdr ElH)
 {
-	printf("  %-35s", "Version: ");
+	printf("  Version:                           ");
 	if (ElH.e_ident[EI_VERSION] == EV_CURRENT)
 	{
 		printf("%d (current)\n", EV_CURRENT);
@@ -95,7 +98,7 @@ void print_Version(Elf64_Ehdr ElH)
 
 void print_OSABI(Elf64_Ehdr ElH)
 {
-	printf("  %-35s", "OS/ABI: ");
+	printf("  OS/ABI:                            ");
 	switch (ElH.e_ident[EI_OSABI])
 	{
 		case ELFOSABI_NONE:
@@ -152,7 +155,7 @@ void print_OSABI(Elf64_Ehdr ElH)
 
 void print_ABIVer(Elf64_Ehdr ElH)
 {
-	printf("  %-35s%d\n", "ABI Version: ", ElH.e_ident[EI_ABIVERSION]);
+	printf("  ABI Version:                       %d\n", ElH.e_ident[EI_ABIVERSION]);
 }
 
 /**
@@ -164,7 +167,7 @@ void print_ABIVer(Elf64_Ehdr ElH)
 
 void print_Type(Elf64_Ehdr ElH)
 {
-	printf("  %-35s", "Type: ");
+	printf("  Type:                              ");
 	switch (ElH.e_type)
 	{
 		case ET_NONE:
@@ -208,7 +211,7 @@ void print_Type(Elf64_Ehdr ElH)
 
 void print_EPAdd(Elf64_Ehdr ElH)
 {
-	printf("  %-35s%p\n", "Entry point address: ", (void *) ElH.e_entry);
+	printf("  Entry point address:               %#x\n", (int) ElH.e_entry);
 }
 
 /**
@@ -222,7 +225,7 @@ void print_EPAdd(Elf64_Ehdr ElH)
 int main(int ac, char **av)
 {
 	int inFile;
-	int R;
+	int R, closed;
 	Elf64_Ehdr ElH;
 
 	if (ac != 2)
@@ -257,5 +260,11 @@ int main(int ac, char **av)
 	print_ABIVer(ElH);
 	print_Type(ElH);
 	print_EPAdd(ElH);
+	closed = close(inFile);
+	if (closed == -1)
+	{
+		fprintf(stderr, "Error: could not close %s\n", av[1]);
+		exit(98);
+	}
 	return (0);
 }
