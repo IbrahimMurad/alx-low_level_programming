@@ -238,7 +238,7 @@ void print_EPAdd(Elf64_Ehdr ElH)
 	unsigned char *p = (unsigned char *) &ElH.e_entry;
 	int len;
 
-	printf("  Entry point :               0x");
+	printf("  Entry point address:               0x");
 	if (ElH.e_ident[EI_DATA] == ELFDATA2LSB)
 	{
 		printf("%x\n", (int) ElH.e_entry);
