@@ -235,7 +235,7 @@ void print_Type(Elf64_Ehdr ElH)
 
 void print_EPAdd(Elf64_Ehdr ElH)
 {
-	unsigned char p[8];
+	unsigned char *p = (unsigned char *) &ElH.e_entry;
 	int len;
 
 	printf("  Entry point address:               0x");
