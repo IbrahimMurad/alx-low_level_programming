@@ -227,26 +227,26 @@ int main(int ac, char **av)
 
 	if (ac != 2)
 	{
-		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
-		exit(97);
+		fprintf(stderr, "Usage: cp file_from file_to\n");
+		exit(98);
 	}
 	inFile = open(av[1], O_RDONLY);
 	if (inFile == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]);
+		fprintf(stderr, "Error: Can't read from file %s\n", av[1]);
 		exit(98);
 	}
 	R = read(inFile, &ElH, sizeof(Elf64_Ehdr));
 	if (R == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]);
+		fprintf(stderr, "Error: Can't read from file %s\n", av[1]);
 		exit(98);
 	}
 	if (!(ElH.e_ident[0] == 0x7f && ElH.e_ident[1] == 'E' &&
 		ElH.e_ident[2] == 'L' && ElH.e_ident[3] == 'F'))
 	{
-		dprintf(STDERR_FILENO, "Error: %s is not an elf file\n", av[1]);
-		exit(99);
+		fprintf(stderr, "Error: %s is not an elf file\n", av[1]);
+		exit(98);
 	}
 	printf("ELF Header:\n");
 	print_Magic(ElH);
