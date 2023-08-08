@@ -15,7 +15,7 @@
 
 void print_Magic(Elf64_Ehdr ElH)
 {
-	printf("Magic:   %02x %02x %02x %02x", 0x7f, 'E', 'L', 'F');
+	printf("  Magic:   %02x %02x %02x %02x", 0x7f, 'E', 'L', 'F');
 	printf(" %02x %02x ", ElH.e_ident[4], ElH.e_ident[5]);
 	printf("%02x %02x ", ElH.e_ident[6], ElH.e_ident[7]);
 	printf("%02x ", ElH.e_ident[8]);
@@ -31,7 +31,7 @@ void print_Magic(Elf64_Ehdr ElH)
 
 void print_Class(Elf64_Ehdr ElH)
 {
-	printf("%-35s", "Class: ");
+	printf("  %-35s", "Class: ");
 	if (ElH.e_ident[EI_CLASS] == ELFCLASSNONE)
 	{
 		printf("Invalid class\n");
@@ -55,7 +55,7 @@ void print_Class(Elf64_Ehdr ElH)
 
 void print_Data(Elf64_Ehdr ElH)
 {
-	printf("%-35s", "Data: ");
+	printf("  %-35s", "Data: ");
 	if (ElH.e_ident[EI_DATA] == ELFDATANONE)
 	{
 		printf("Invalid data encoding\n");
@@ -79,7 +79,7 @@ void print_Data(Elf64_Ehdr ElH)
 
 void print_Version(Elf64_Ehdr ElH)
 {
-	printf("%-35s", "Version: ");
+	printf("  %-35s", "Version: ");
 	if (ElH.e_ident[EI_VERSION] == EV_CURRENT)
 	{
 		printf("%d (current)\n", EV_CURRENT);
@@ -95,7 +95,7 @@ void print_Version(Elf64_Ehdr ElH)
 
 void print_OSABI(Elf64_Ehdr ElH)
 {
-	printf("%-35s", "OS/ABI: ");
+	printf("  %-35s", "OS/ABI: ");
 	switch (ElH.e_ident[EI_OSABI])
 	{
 		case ELFOSABI_NONE:
@@ -152,7 +152,7 @@ void print_OSABI(Elf64_Ehdr ElH)
 
 void print_ABIVer(Elf64_Ehdr ElH)
 {
-	printf("%-35s%d\n", "ABI Version: ", ElH.e_ident[EI_ABIVERSION]);
+	printf("  %-35s%d\n", "ABI Version: ", ElH.e_ident[EI_ABIVERSION]);
 }
 
 /**
@@ -164,7 +164,7 @@ void print_ABIVer(Elf64_Ehdr ElH)
 
 void print_Type(Elf64_Ehdr ElH)
 {
-	printf("%-35s", "Type: ");
+	printf("  %-35s", "Type: ");
 	switch (ElH.e_type)
 	{
 		case ET_NONE:
@@ -208,7 +208,7 @@ void print_Type(Elf64_Ehdr ElH)
 
 void print_EPAdd(Elf64_Ehdr ElH)
 {
-	printf("%-35s%p\n", "Entry point address: ", (void *) ElH.e_entry);
+	printf("  %-35s%p\n", "Entry point address: ", (void *) ElH.e_entry);
 }
 
 /**
