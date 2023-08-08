@@ -253,9 +253,9 @@ void print_EPAdd(Elf64_Ehdr ElH)
 		{
 			len = 7;
 		}
-		for (; len >= 0; len--)
+		for (; len >= 0 && p[len] != 0; len--)
 		{
-			printf("%x", p[len]);
+			printf("%02x", p[len]);
 		}
 		printf("\n");
 	}
