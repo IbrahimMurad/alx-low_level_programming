@@ -177,7 +177,7 @@ void print_Type(Elf64_Ehdr ElH)
 			printf("EXEC (Executable file)\n");
 			break;
 		case ET_DYN:
-			printf("DYN (Position-Independent Executable file)\n");
+			printf("DYN (Shared object file)\n");
 			break;
 		case ET_CORE:
 			printf("CORE (Core file)\n");
