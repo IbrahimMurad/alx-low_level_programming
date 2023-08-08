@@ -87,6 +87,10 @@ void print_Version(Elf64_Ehdr ElH)
 	{
 		printf("%d (current)\n", EV_CURRENT);
 	}
+	else if (ElH.e_ident[EI_VERSION] == EV_NONE)
+	{
+		printf("%d\n", EV_NONE);
+	}
 }
 
 /**
