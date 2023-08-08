@@ -61,7 +61,7 @@ void print_Data(Elf64_Ehdr ElH)
 	printf("  Data:                              ");
 	if (ElH.e_ident[EI_DATA] == ELFDATANONE)
 	{
-		printf("Invalid data encoding\n");
+		printf("none\n");
 	}
 	else if (ElH.e_ident[EI_DATA] == ELFDATA2LSB)
 	{
