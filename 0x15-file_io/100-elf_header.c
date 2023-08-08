@@ -94,6 +94,38 @@ void print_Version(Elf64_Ehdr ElH)
 }
 
 /**
+ * cntnuOSABI - continues the cses of e_type
+ * @ElH: the elf header values
+ *
+ * Return: nothing
+ */
+
+void cntnuOSABI(Elf64_Ehdr ElH)
+{
+	switch (ElH.e_ident[EI_OSABI])
+	{
+		case ELFOSABI_TRU64:
+			printf("UNIX - TRU64\n");
+			break;
+		case ELFOSABI_MODESTO:
+			printf("Novell - Modesto\n");
+			break;
+		case ELFOSABI_OPENBSD:
+			printf("UNIX - OpenBSD\n");
+			break;
+		case ELFOSABI_STANDALONE:
+			printf("Standalone App\n");
+			break;
+		case ELFOSABI_ARM:
+			printf("ARM\n");
+			break;
+		default:
+			printf("<unknown: %x>\n", ElH.e_ident[EI_OSABI]);
+			break;
+	}
+}
+
+/**
  * print_OSABI - prints the OS ABI identification
  * @ElH: the elf header values
  *
@@ -129,26 +161,13 @@ void print_OSABI(Elf64_Ehdr ElH)
 		case ELFOSABI_FREEBSD:
 			printf("UNIX - FreeBSD\n");
 			break;
-		case ELFOSABI_TRU64:
-			printf("UNIX - TRU64\n");
-			break;
-		case ELFOSABI_MODESTO:
-			printf("Novell - Modesto\n");
-			break;
-		case ELFOSABI_OPENBSD:
-			printf("UNIX - OpenBSD\n");
-			break;
-		case ELFOSABI_STANDALONE:
-			printf("Standalone App\n");
-			break;
-		case ELFOSABI_ARM:
-			printf("ARM\n");
-			break;
 		default:
-			printf("<unknown: %x>\n", ElH.e_ident[EI_OSABI]);
+			cntnuOSABI(ElH);
 			break;
 	}
 }
+
+
 
 /**
  * print_ABIVer - prints the ABI version
@@ -159,7 +178,8 @@ void print_OSABI(Elf64_Ehdr ElH)
 
 void print_ABIVer(Elf64_Ehdr ElH)
 {
-	printf("  ABI Version:                       %d\n", ElH.e_ident[EI_ABIVERSION]);
+	printf("  ABI Version:                       %d\n",
+	ElH.e_ident[EI_ABIVERSION]);
 }
 
 /**
@@ -233,22 +253,13 @@ int main(int ac, char **av)
 	Elf64_Ehdr ElH;
 
 	if (ac != 2)
-	{
-		fprintf(stderr, "Usage: cp file_from file_to\n");
-		exit(98);
-	}
+		fprintf(stderr, "Usage: cp file_from file_to\n"), exit(98);
 	inFile = open(av[1], O_RDONLY);
 	if (inFile == -1)
-	{
-		fprintf(stderr, "Error: Can't read from file %s\n", av[1]);
-		exit(98);
-	}
+		fprintf(stderr, "Error: Can't read from file %s\n", av[1]), exit(98);
 	R = read(inFile, &ElH, sizeof(Elf64_Ehdr));
 	if (R == -1)
-	{
-		fprintf(stderr, "Error: Can't read from file %s\n", av[1]);
-		exit(98);
-	}
+		fprintf(stderr, "Error: Can't read from file %s\n", av[1]), exit(98);
 	if (!(ElH.e_ident[0] == 0x7f && ElH.e_ident[1] == 'E' &&
 		ElH.e_ident[2] == 'L' && ElH.e_ident[3] == 'F'))
 	{
@@ -266,9 +277,6 @@ int main(int ac, char **av)
 	print_EPAdd(ElH);
 	closed = close(inFile);
 	if (closed == -1)
-	{
-		fprintf(stderr, "Error: could not close %s\n", av[1]);
-		exit(98);
-	}
+		fprintf(stderr, "Error: could not close %s\n", av[1]), exit(98);
 	return (0);
 }
