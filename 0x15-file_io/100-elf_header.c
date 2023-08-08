@@ -235,33 +235,7 @@ void print_Type(Elf64_Ehdr ElH)
 
 void print_EPAdd(Elf64_Ehdr ElH)
 {
-	unsigned char *p = (unsigned char *) &ElH.e_entry;
-	int len, i = 0;
-
-	printf("  Entry point address:               0x");
-	len = ElH.e_ident[EI_CLASS] == ELFCLASS32 ? 3 : 7;
-	if (ElH.e_ident[EI_DATA] == ELFDATA2LSB)
-	{
-		while (p[i] == 0)
-			i++;
-		printf("%x", p[i++]);
-		for (; i <= len; i++)
-		{
-			printf("%02x", p[i]);
-		}
-	}
-	else
-	{
-		i = len;
-		while (p[i] == 0)
-			i--;
-		printf("%x", p[i--]);
-		for (; i >= 0; i--)
-		{
-			printf("%02x", p[len]);
-		}
-	}
-	printf("\n");
+	printf("  Entry point address:               %#x\n", (int) ElH.e_entry);
 }
 
 /**
