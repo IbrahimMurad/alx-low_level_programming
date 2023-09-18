@@ -12,7 +12,7 @@ int main(void)
 	char *s = "hello, world";
     char *t;
 
-	t = _strstr(s, "hello, world");
+	t = _strstr(s, "or");
 	printf("%s\n", t);
 	t = _strstr(s, "hello");
 	printf("%s\n", t);
