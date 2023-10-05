@@ -14,6 +14,10 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 {
 	hash_node_t *first_at_key;
 
+	if (ht == NULL || key == NULL || *key == '\0')
+	{
+		return (NULL);
+	}
 	first_at_key = ht->array[key_index((unsigned char *) key, ht->size)];
 	if (first_at_key == NULL)
 	{
