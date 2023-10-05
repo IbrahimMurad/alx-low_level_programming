@@ -24,16 +24,15 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	new_node->key = strdup(key);
 	new_node->value = strdup(value);
 	new_node->next = NULL;
-
 	index_of_key = key_index((unsigned char *) key, ht->size);
-
 	if (ht->array[index_of_key] == NULL)
+	{
 		ht->array[index_of_key] = new_node;
+	}
 	else
 	{
 		new_node->next = ht->array[index_of_key];
 		ht->array[index_of_key] = new_node;
 	}
-
 	return (1);
 }
