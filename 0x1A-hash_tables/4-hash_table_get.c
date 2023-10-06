@@ -12,7 +12,7 @@
 
 char *hash_table_get(const hash_table_t *ht, const char *key)
 {
-	hash_node_t *first_at_key;
+	hash_node_t *first_at_key, *temp;
 
 	if (!(ht && key && *key) || ht->array == NULL)
 	{
@@ -23,9 +23,16 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 	{
 		return (NULL);
 	}
-	if (strcmp(key, first_at_key->key) != 0)
+	if (strcmp(first_at_key->key, key) == 0)
 	{
-		return (NULL);
+		return (first_at_key->value);
 	}
-	return (first_at_key->value);
+	temp = first_at_key;
+	while (temp)
+	{
+		if (strcmp(key, temp->key) == 0)
+			return (temp->value);
+		temp = temp->next;
+	}
+	return (NULL);
 }
