@@ -6,7 +6,7 @@
  * print_list - prints a linked list of hash_node_t
  * @h: a poionter to a pointer to the first node
  *
- * Return: nothing 
+ * Return: nothing
 */
 
 void print_list(hash_node_t **h)
