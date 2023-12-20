@@ -6,7 +6,7 @@ OBJ = .o
 
 NAME = school
 
-RM = clean oclean
+RM = rm -f
 
 all : $(NAME)
 
@@ -20,11 +20,11 @@ school$(OBJ) : school$(SRC) m.h
 	$(CC) -c -o school$(OBJ) school$(SRC)
 
 clean :
-	rm -f *~ $(NAME)
+	$(RM) *~ $(NAME)
 
 oclean :
-	rm -f main$(OBJ) school$(OBJ)
+	$(RM) main$(OBJ) school$(OBJ)
 
-fclean : $(RM)
+fclean : clean oclean
 
 re : oclean all
