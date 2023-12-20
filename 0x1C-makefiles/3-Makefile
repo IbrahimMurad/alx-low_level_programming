@@ -1,7 +1,11 @@
 CC = gcc
+
 SRC = .c
+
 OBJ = .o
+
 NAME = school
+
 RM = oclean
 
 all : $(NAME)
