@@ -13,6 +13,7 @@ CFLAGS = -Wall -Werror -Wextra -pedantic
 all : $(NAME)
 
 $(NAME) : main$(OBJ) school$(OBJ)
+	$(CC) main$(OBJ) school$(OBJ) -o $(NAME)
 
 main$(OBJ) school$(OBJ) : m.h
 
