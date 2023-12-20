@@ -23,4 +23,4 @@ $(RM) :
 
 fclean : clean $(RM)
 
-re : $(RM)
+re : $(RM) all
